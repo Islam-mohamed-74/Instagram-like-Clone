@@ -16,8 +16,8 @@ export default function Explore() {
   const debouncedSearchValue = useDebounce(searchValue, 500);
   const {
     data: searchedPosts,
-    isFetching,
-    isSearchFetching,
+    // alias react-query's isFetching to isSearchFetching
+    isFetching: isSearchFetching,
   } = useSearchPosts(debouncedSearchValue);
 
   useEffect(() => {
@@ -80,7 +80,7 @@ export default function Explore() {
         {shouldShowSearchResults ? (
           <SearchResults
             isSearchFetching={isSearchFetching}
-            searchedPosts={searchedPosts}
+            searchedPosts={searchedPosts?.documents}
           />
         ) : shouldShowPosts ? (
           <p className="text-light-4 mt-10 text-center w-full">End of posts</p>

@@ -10,6 +10,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Loader from "@/components/shared/Loader";
 import PostStats from "@/components/shared/PostStats";
+import GridPostList from "@/components/shared/GridPostList";
 
 const PostDetails = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const PostDetails = () => {
 
   const { data: post, isLoading } = useGetPostsById(id || "");
   const { data: userPosts, isLoading: isUserPostLoading } = useGetUserPosts(
-    post?.creator
+    post?.creatorData?.$id
   );
   const { mutate: deletePost } = useDeletePost();
 
@@ -62,7 +63,7 @@ const PostDetails = () => {
           <div className="post_details-info">
             <div className="flex-between w-full">
               <Link
-                to={`/profile/${post?.creator.$id}`}
+                to={`/profile/${post?.creatorData?.$id}`}
                 className="flex items-center gap-3"
               >
                 <img
@@ -92,7 +93,9 @@ const PostDetails = () => {
               <div className="flex-center gap-4">
                 <Link
                   to={`/update-post/${post?.$id}`}
-                  className={`${user.id !== post?.creator && "hidden"}`}
+                  className={`${
+                    user.id !== post?.creatorData?.$id && "hidden"
+                  }`}
                 >
                   <img
                     src={"/assets/icons/edit.svg"}
@@ -105,8 +108,8 @@ const PostDetails = () => {
                 <Button
                   onClick={handleDeletePost}
                   variant="ghost"
-                  className={`ost_details-delete_btn ${
-                    user.id !== post?.creator && "hidden"
+                  className={`post_details-delete_btn ${
+                    user.id !== post?.creatorData?.$id && "hidden"
                   }`}
                 >
                   <img
@@ -146,7 +149,7 @@ const PostDetails = () => {
         </div>
       )}
 
-      {/* <div className="w-full max-w-5xl">
+      <div className="w-full max-w-5xl">
         <hr className="border w-full border-dark-4/80" />
 
         <h3 className="body-bold md:h3-bold w-full my-10">
@@ -157,7 +160,7 @@ const PostDetails = () => {
         ) : (
           <GridPostList posts={relatedPosts} />
         )}
-      </div> */}
+      </div>
     </div>
   );
 };

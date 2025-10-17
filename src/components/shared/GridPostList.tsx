@@ -4,7 +4,7 @@ import PostStats from "./PostStats";
 import type { Models } from "appwrite";
 
 type GridPostListProps = {
-  posts: Models.Document[];
+  posts: Models.Document[] | any[];
   showUser?: boolean;
   showStats?: boolean;
 };

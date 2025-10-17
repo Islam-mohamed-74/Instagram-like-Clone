@@ -398,7 +398,7 @@ export async function getPostById(postId: string) {
 
     // 🔹 4. إرجاع البيانات بشكل موحد
     return {
-      ...post,
+      ...(post as any),
       creatorData,
       likedUsers,
     };
@@ -538,7 +538,7 @@ export async function getInfinitePosts({ pageParam }: { pageParam?: string }) {
 
     // 2️⃣ - تجهيز بوستات مع بيانات اللايكس والكرييتور
     const postsWithExtras = await Promise.all(
-      posts.map(async (post: Models.Document) => {
+      posts.map(async (post: Models.Document | any) => {
         let creatorData = null;
         let likedUsers: Models.Document[] = [];
 

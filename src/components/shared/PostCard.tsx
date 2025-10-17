@@ -5,16 +5,18 @@ import { useUserContext } from "@/context/AuthContext";
 import PostStats from "./PostStats";
 
 type PostCardProps = {
-  post: Models.Document & {
-    creatorData: Models.Document;
-    creator: string;
-    location?: string;
-    caption?: string;
-    tags: string[];
-    imageUrl?: string;
-    $createdAt: string;
-    likedUsers: Models.Document[];
-  };
+  post:
+    | (Models.Document & {
+        creatorData: Models.Document;
+        creator: string;
+        location?: string;
+        caption?: string;
+        tags: string[];
+        imageUrl?: string;
+        $createdAt: string;
+        likedUsers: Models.Document[];
+      })
+    | any;
 };
 
 const PostCard = ({ post }: PostCardProps) => {

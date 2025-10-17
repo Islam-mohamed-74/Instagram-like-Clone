@@ -26,7 +26,7 @@ import Loader from "../shared/Loader";
 import { toast } from "react-toastify";
 
 type PostFormProps = {
-  post?: Models.Document;
+  post?: Models.Document | null | any;
   action: "Create" | "Update";
 };
 

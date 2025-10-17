@@ -1,5 +1,4 @@
 import PostForm from "@/components/form/PostForm";
-import React from "react";
 
 export default function CreatePost() {
   return (
