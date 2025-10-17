@@ -52,7 +52,7 @@ export default function SignInForm() {
     if (isLoggedIn) {
       form.reset();
       navigate("/");
-      toast.success("Account created successfully.");
+      toast.success("Logged in successfully.");
     } else {
       return toast.error("Something went wrong, please try again.");
     }
