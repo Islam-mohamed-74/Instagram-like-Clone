@@ -2,7 +2,7 @@
 
 A modern Instagram-like single-page application (SPA) built with React, TypeScript, Vite and Appwrite as the backend platform. This project is a small social media clone, intended as a learning / demo application with features such as authentication, posts with images, likes, saves, profiles and basic search/explore functionality.
 
- ![preview](./image.jpg)
+ ![preview](./image.png)
 
 ## Key Features
 
