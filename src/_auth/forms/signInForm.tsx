@@ -45,7 +45,8 @@ export default function SignInForm() {
     });
 
     if (!session) {
-      toast.error("Something went wrong, please try again.");
+      // toast.error("Something went wrong, please try again.");
+      return;
     }
 
     const isLoggedIn = await checkAuthUser();
